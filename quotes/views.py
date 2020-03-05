@@ -1,3 +1,5 @@
+# Copyright (c) 2019-2020 Tristan Farrell All Rights Reserved
+
 from django.shortcuts import render, redirect
 from .models import Stock
 from .forms import StockForm
@@ -12,7 +14,7 @@ def home(request):
         ticker = request.POST['ticker'] #from base.html form
         api_request = requests.get(
             "https://cloud.iexapis.com/stable/stock/"+ticker+"/quote?token=pk_f5e3130aa0b94510b7a91443b209149e")
-        
+            # use environmental variables to hide key
         try:
             api = json.loads(api_request.content)
         except Exception as e:
